@@ -32,10 +32,23 @@ else:
     articulo = procesarDatos(sys.argv[2])
 
 def chequearSubDict( subDict, testDict ):
-    if(all(x in testDict for x in subDict)): 
+    i = 0
+    j = 0
+    while(i < len(testDict) and  j < len(subDict)):
+        if(subDict[j] == testDict[i]):
+            i = i + 1
+            j = j + 1
+        elif(subDict[j] > testDict[i]):
+            i = i + 1
+        else:
+            return False
+    
+    if (j == len(subDict)):
         return True
     else:
         return False
+    
+
 
 # Creacion del diccionario de la carta
 
@@ -73,5 +86,4 @@ for i in range(0,len(carta)):
 
 # Imprimo como tipo string a mi carta hecha con letras recortadas
 print("".join(cartaRecortada))
-
 
